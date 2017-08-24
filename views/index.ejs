@@ -1,0 +1,25 @@
+<h1>Hello</h1>
+
+<%= body.productCount %>
+
+<div id="selected-product">
+    <img class="select-image" />
+    <span class="title"></span><span class="description"></span>
+</div>
+
+//looping through products as product
+<div>
+    <img src=""/>
+    <button class="view-more" data-img="<%= product.image_url %>" data-description="">View MORE</button>
+</div>
+
+
+<script>
+    $('.view-more').click(function(event) {
+        var data = $(event.target).data()
+        console.log(data.img);
+        console.log(data.description)
+
+        $('#selected-product .select-image').prop('src', data.img)
+    })
+</script>
