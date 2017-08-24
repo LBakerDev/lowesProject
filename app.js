@@ -17,8 +17,8 @@ const url = "https://m.lowes.com/CatalogServices/product/nvalue/v1_0?nValue=4294
 app.get("/", function (req, res) {
     //res.render('index');
     var request = require('request');
-    request(url, function (error, response, body) {
-        res.render('index', {body: JSON.parse(body)});
+    request(url, function (error, response, item) {
+        res.render('index', {item: JSON.parse(item)});
     });
 })
 

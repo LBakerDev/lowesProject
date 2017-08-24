@@ -9,54 +9,92 @@
     <link href="/assets/main.css" rel="stylesheet">
 </head>
 
-<body>
 
-    <div class- "jumbotron jumbotron-fluid">
-        <div>
-
+<body class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="box one">
+            <img id="data-img" src="<%= item.productList[0].imageUrls.md %>" alt="">
         </div>
+        <div class="box two">
+            <h3>
+                <strong id="selected-description"> <%= item.productList[0].description && item.productList[0].description %></strong>
+            </h3>
+            <ul class="heroDetails" id="selected-marketing">
+                <% item.productList[0].marketingBullets.forEach(function(bullet) { %>
+                <li>
+                    <%- bullet.substring(0,50) %>
+                </li>
+                <% })%>
+            </ul>
+        </div>
+        <div class="box three">
+
+            <h4 id="data-price"><strong>$<%= parseFloat(item.productList[0].networkPrice).toFixed(2) %></strong></h4>
+            <button class="btn btn-lg cart-btn">ADD TO CART</button>
+        </div>
+
+
 
     </div>
 
-    <div class="container">
+    <div class="product-box">
+                <% item.productList.forEach(function(product) { %>
+                    <div class="product-container" data-price="<%= product.networkPrice %>" data-img="<%=product.imageUrls.md %>" data-desc="<%= product.description %>"
+                        data-marketing="<%= product.marketingBullets.join('|') %>">
+                        <div class="productImg">
 
-        <div class="row text-center">
+                            <img class="" src="<%=product.imageUrls.sm %>" alt="Great appliances">
 
-            <div class="flex-products">
-                <div class="box one">
-                    <div class="work">
+                        </div>
 
-                        <img class="" src="<%=body.productList[0].imageUrls.sm %>" alt="Great appliances">
+                        <p id="product-desc">
+                                <strong><%= product.description %></strong>
+                            </p>
+                        <div class="product-price">
+                            <h3 id="price"><span><strong>$<%= parseFloat(product.networkPrice).toFixed(2) %></strong></span></h3>
+                            
+                            <a target="_blank" class="btn btn-primary btn-md view-more" href="">View More</a>
 
+                        </div>
                     </div>
-                    <div class="work-info">
-                        <h3><span><%= body.productList[0].networkPrice %></span></h3>
-                        <p> <%= body.productList[0].description %> </p>
-                        <a target="_blank" class="btn btn-primary" href="https://github.com/naeroled/picture_esque">View More</a>
 
-                    </div>
-                </div>
-            </div>
-        </div>
+            <% }) %>
     </div>
 
-    <h1>Hello</h1>
 
-    <%= body.productCount %>
+    <!-- <div id="selected-product">
+        <img class="select-image" />
+        <span class="title"></span><span class="description"></span>
+    </div>
 
-        <div id="selected-product">
-            <img class="select-image" />
-            <span class="title"></span><span class="description"></span>
-        </div>
+    <div>
+        <img src="" />
+        <button class="view-more" data-img="<%= item.image_url %>" data-description="">View MORE</button>
+    </div> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/js/mdb.min.js"></script>
+     <script>
+        $('.product-container').click(function(event) {
+            event.preventDefault();
+            //console.log(event)
+            var product = $(event.currentTarget).data();
+            var productPrice = "$" + parseFloat(product.price).toFixed(2);
+            
+            $('#selected-description').text(product.desc);
+            var bullets = product.marketing.split('|');
+            var marketingList = bullets.map(function(bullet) {
+                return '<li>' + bullet + '<li>';
+            });
+            $('#selected-marketing').html(marketingList);
+            $('#data-img').prop("src", product.img);
+            $('#data-price').text(productPrice);
+        })
 
-        //looping through products as product
-        <div>
-            <img src="" />
-            <button class="view-more" data-img="<%= body.image_url %>" data-description="">View MORE</button>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/js/mdb.min.js"></script>
+        $('.cart-btn').click(function(product) {
+            alert("Added " + $('#data-price').text() + " to your cart!");
+        })
+        </script> 
 </body>
 
 </html>
@@ -75,28 +113,4 @@
 
 
 
-<h1>Hello</h1>
 
-<%= body.productCount %>
-
-    <div id="selected-product">
-        <img class="select-image" />
-        <span class="title"></span><span class="description"></span>
-    </div>
-
-    <!-- looping through products as product -->
-    <div>
-        <img src="" />
-        <button class="view-more" data-img="<%= body.image_url %>" data-description="">View MORE</button>
-    </div>
-
-
-    <!-- <script>
-    $('.view-more').click(function(event) {
-        var data = $(event.target).data()
-        console.log(data.img);
-        console.log(data.description)
-
-        $('#selected-product .select-image').prop('src', data.img)
-    })
-</script>  -->
