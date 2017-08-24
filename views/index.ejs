@@ -1,20 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/css/mdb.min.css" rel="stylesheet">
+    <link href="/assets/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class- "jumbotron jumbotron-fluid">
+        <div>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <div class="row text-center">
+
+            <div class="flex-products">
+                <div class="box one">
+                    <div class="work">
+
+                        <img class="" src="<%=body.productList[0].imageUrls.sm %>" alt="Great appliances">
+
+                    </div>
+                    <div class="work-info">
+                        <h3><span><%= body.productList[0].networkPrice %></span></h3>
+                        <p> <%= body.productList[0].description %> </p>
+                        <a target="_blank" class="btn btn-primary" href="https://github.com/naeroled/picture_esque">View More</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1>Hello</h1>
+
+    <%= body.productCount %>
+
+        <div id="selected-product">
+            <img class="select-image" />
+            <span class="title"></span><span class="description"></span>
+        </div>
+
+        //looping through products as product
+        <div>
+            <img src="" />
+            <button class="view-more" data-img="<%= body.image_url %>" data-description="">View MORE</button>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/js/mdb.min.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h1>Hello</h1>
 
 <%= body.productCount %>
 
-<div id="selected-product">
-    <img class="select-image" />
-    <span class="title"></span><span class="description"></span>
-</div>
+    <div id="selected-product">
+        <img class="select-image" />
+        <span class="title"></span><span class="description"></span>
+    </div>
 
-//looping through products as product
-<div>
-    <img src=""/>
-    <button class="view-more" data-img="<%= product.image_url %>" data-description="">View MORE</button>
-</div>
+    <!-- looping through products as product -->
+    <div>
+        <img src="" />
+        <button class="view-more" data-img="<%= body.image_url %>" data-description="">View MORE</button>
+    </div>
 
 
-<script>
+    <!-- <script>
     $('.view-more').click(function(event) {
         var data = $(event.target).data()
         console.log(data.img);
@@ -22,4 +99,4 @@
 
         $('#selected-product .select-image').prop('src', data.img)
     })
-</script>
+</script>  -->
