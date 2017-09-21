@@ -20,13 +20,15 @@ app.get("/", function (req, res) {
     request(url, function (error, response, item) {
         res.render('index', {item: JSON.parse(item)});
     });
-})
+});
 
 
 
 
 
-app.listen(8080 || process.env.Port, function () {
+app.listen(process.env.Port || 8080, function () {
     console.log("Server is running");
 });
+
+
 

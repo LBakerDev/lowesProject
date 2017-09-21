@@ -16,5 +16,7 @@ $('.product-container').click(function(event) {
 })
 
 $('.cart-btn').click(function(product) {
+    // let addCart = ("<p class='alert alert-success'>Added " + product.productPrice + " to your cart<p>");
+    // $('.container').prepend(addCart);
     alert("Added " + $('#data-price').text() + " to your cart!");
 })
